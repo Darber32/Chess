@@ -14,6 +14,7 @@ Pawn::Pawn(Color color, int x, int y, sf::Image image)
 
 void Pawn::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass)
 {
+    c = 0;
     int i = 0;
     if (color == white)
     {
