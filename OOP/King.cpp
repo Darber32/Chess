@@ -12,6 +12,8 @@ King::King(Color color, int x, int y, sf::Image image)
 }
 void King::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass)
 {
+    for (int i = 0; i < c; i++)
+        markers_mass[i]->Clear(markers_mass[i]);
     c = 0;
     int i = 0;
     if (y > 0)
