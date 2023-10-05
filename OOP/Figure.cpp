@@ -1,7 +1,7 @@
 #include "Main.h"
 #include "Table.h"
 #include "Figure.h"
-#include "Marker.h"
+//#include "Marker.h"
 #include <SFML/Graphics.hpp>
 
 Figure::Figure()
@@ -64,7 +64,7 @@ Color Figure::Get_Color()
 {
     return color;
 }
-void Figure::Move(int x, int y, Table& table, Figure* figure, Marker* marker)
+void Figure::Move(int x, int y, Table& table, Figure* figure, Figure* marker)
 {
     sf::Vector2u vector = figure->Get_Coords();
     int i = vector.y / size, j = vector.x / size;
@@ -80,11 +80,15 @@ void Figure::Move(int x, int y, Table& table, Figure* figure, Marker* marker)
     j = vector.x / size;*/
     table.Take_Position(figure, i, j);
 }
+void Figure::Clear(Figure* markers_mass)
+{
+    markers_mass->Set_Position(800, 800);
+}
 void Figure::Draw_Figure()
 {
     window.draw(sprite);
 }
-void Figure::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass)
+void Figure::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
 {
     return;
 

@@ -12,7 +12,7 @@ Pawn::Pawn(Color color, int x, int y, sf::Image image)
     Set_Sprite(image, 1);
 }
 
-void Pawn::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass)
+void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
 {
     for (int i = 0; i < c; i++)
         markers_mass[i]->Clear(markers_mass[i]);

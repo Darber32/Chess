@@ -11,7 +11,7 @@ Castle::Castle(Color color, int x, int y, sf::Image image)
     Set_Sprite(image, 1);
 }
 
-void Castle::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass)
+void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
 {
     for (int i = 0; i < c; i++)
         markers_mass[i]->Clear(markers_mass[i]);

@@ -59,7 +59,7 @@ int main()
                                 {
                                     if (color == table.Get_Position(i, j)->Get_Color())
                                     {
-                                        table.Get_Position(i, j)->Show_Avalible_Positions(table, count_of_markers, markers_mass);
+                                        table.Get_Position(i, j)->Show_Avalible_Positions(table, count_of_markers, (Figure**) markers_mass);
                                         figure_i = i;
                                         figure_j = j;
                                     }
