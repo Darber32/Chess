@@ -16,7 +16,7 @@ void Knight::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass
         markers_mass[i]->Clear(markers_mass[i]);
     c = 0;
     int i = 0;
-    if (y > 0)
+    if (y > 100)
     {
         if (x > 0)
         {
@@ -82,7 +82,7 @@ void Knight::Show_Avalible_Positions(Table& table, int& c, Marker** markers_mass
             }
         }
     }
-    if (x > 0)
+    if (x > 100)
     {
         if (y > 0)
         {
