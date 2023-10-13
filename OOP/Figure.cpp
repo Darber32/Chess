@@ -1,12 +1,11 @@
 #include "Main.h"
 #include "Table.h"
 #include "Figure.h"
-//#include "Marker.h"
 #include <SFML/Graphics.hpp>
 
 Figure::Figure()
 {
-    size = 100;
+    size = width / 8;
 }
 
 void Figure::Set_Color(Color color)
@@ -64,12 +63,12 @@ Color Figure::Get_Color()
 {
     return color;
 }
-void Figure::Move(int x, int y, Table& table, Figure* figure, Figure* marker)
+void Figure::Move(int x, int y, Table& table, Figure* figure, int index)
 {
     sf::Vector2u vector = figure->Get_Coords();
     int i = vector.y / size, j = vector.x / size;
     table.Reset_Position(i, j);
-    vector = marker->Get_Coords();
+    vector = table.Get_Marker_Coords(index);
     i = vector.y / size;
     j = vector.x / size;
     if (table.Get_Position(i, j) != nullptr)
@@ -80,15 +79,12 @@ void Figure::Move(int x, int y, Table& table, Figure* figure, Figure* marker)
     j = vector.x / size;*/
     table.Take_Position(figure, i, j);
 }
-void Figure::Clear(Figure* markers_mass)
-{
-    markers_mass->Set_Position(800, 800);
-}
+
 void Figure::Draw_Figure()
 {
     window.draw(sprite);
 }
-void Figure::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
+void Figure::Show_Avalible_Positions(Table& table, int& c)
 {
     return;
 

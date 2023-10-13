@@ -9,7 +9,7 @@
 #include "King.h"
 #include "Marker.h"
 
-Table::Table(sf::RectangleShape mass_of_rects[SIZE][SIZE], sf::Image image)
+Table::Table(sf::RectangleShape mass_of_rects[SIZE][SIZE], sf::Image image, sf::Image image_2)
 {
     int index = 0, c = 0;
     for (int i = 0; i < SIZE; i++)
@@ -61,6 +61,8 @@ Table::Table(sf::RectangleShape mass_of_rects[SIZE][SIZE], sf::Image image)
             if (i == 0 or i == 1 or i == 6 or i == 7)
                 c++;
         }
+    for (int i = 0; i < 32; i++)
+        marker_mass[i] = new Marker(image_2);
 }
 
 Table::~Table()
@@ -69,6 +71,8 @@ Table::~Table()
         for (int j = 0; j < SIZE; j++)
             if (Get_Position(i, j) != nullptr)
                 Delete(i, j);
+    for (int i = 0; i < 32; i++)
+        delete marker_mass[i];
 }
 
 void Table::Take_Position(Figure* figure, int i, int j)
@@ -121,10 +125,28 @@ void Table::Delete(int i, int j)
         }
 }
 
+void Table::Set_Marker_Position(int i, int x, int y)
+{
+    marker_mass[i]->Set_Position(x, y);
+}
+
+sf::Vector2u Table::Get_Marker_Coords(int i)
+{
+    return marker_mass[i]->Get_Coords();
+}
+
+void Table::Marker_Clear()
+{
+    for (int i = 0; i < 32; i++)
+        marker_mass[i]->Clear(marker_mass[i]);
+}
+
 void Table::Draw()
 {
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
             if (mass[i][j] != nullptr)
                 mass[i][j]->Draw_Figure();
+    for (int i = 0; i < 32; i++)
+        marker_mass[i]->Draw_Figure();
 }

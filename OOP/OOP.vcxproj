@@ -138,6 +138,7 @@
     <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Bishop.h" />
     <ClInclude Include="Castle.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Main.h" />

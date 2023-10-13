@@ -12,10 +12,9 @@ Pawn::Pawn(Color color, int x, int y, sf::Image image)
     Set_Sprite(image, 1);
 }
 
-void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
+void Pawn::Show_Avalible_Positions(Table& table, int& c)
 {
-    for (int i = 0; i < c; i++)
-        markers_mass[i]->Clear(markers_mass[i]);
+    table.Marker_Clear();
     c = 0;
     int i = 0;
     if (color == white)
@@ -24,13 +23,13 @@ void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
         {
             if (table.Get_Position((y - size) / size, x / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x, y - size);
+                table.Set_Marker_Position(i, x, y - size);
                 i++;
                 c++;
-                if (y == 600)
+                if (y == height - 2 * size)
                     if (table.Get_Position((y - 2 * size) / size, x / size) == nullptr)
                     {
-                        markers_mass[i]->Set_Position(x, y - 2 * size);
+                        table.Set_Marker_Position(i, x, y - 2 * size);
                         i++;
                         c++;
                     }
@@ -38,14 +37,14 @@ void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
             if (table.Get_Position((y - size) / size, (x - size) / size) != nullptr)
                 if (table.Get_Position((y - size) / size, (x - size) / size)->Get_Color() != color)
                 {
-                    markers_mass[i]->Set_Position(x - size, y - size);
+                    table.Set_Marker_Position(i, x - size, y - size);
                     i++;
                     c++;
                 }
             if (table.Get_Position((y - size) / size, (x + size) / size) != nullptr)
                 if (table.Get_Position((y - size) / size, (x + size) / size)->Get_Color() != color)
                 {
-                    markers_mass[i]->Set_Position(x + size, y - size);
+                    table.Set_Marker_Position(i, x + size, y - size);
                     i++;
                     c++;
                 }
@@ -53,17 +52,17 @@ void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
     }
     else
     {
-        if (y < 700)
+        if (y < height - size)
         {
             if (table.Get_Position((y + size) / size, x / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x, y + size);
+                table.Set_Marker_Position(i, x, y + size);
                 i++;
                 c++;
-                if (y == 100)
+                if (y == size)
                     if (table.Get_Position((y + 2 * size) / size, x / size) == nullptr)
                     {
-                        markers_mass[i]->Set_Position(x, y + 2 * size);
+                        table.Set_Marker_Position(i, x, y + 2 * size);
                         i++;
                         c++;
                     }
@@ -71,14 +70,14 @@ void Pawn::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
             if (table.Get_Position((y + size) / size, (x - size) / size) != nullptr)
                 if (table.Get_Position((y + size) / size, (x - size) / size)->Get_Color() != color)
                 {
-                    markers_mass[i]->Set_Position(x - size, y + size);
+                    table.Set_Marker_Position(i, x - size, y + size);
                     i++;
                     c++;
                 }
             if (table.Get_Position((y + size) / size, (x + size) / size) != nullptr)
                 if (table.Get_Position((y + size) / size, (x + size) / size)->Get_Color() != color)
                 {
-                    markers_mass[i]->Set_Position(x + size, y + size);
+                    table.Set_Marker_Position(i, x + size, y + size);
                     i++;
                     c++;
                 }

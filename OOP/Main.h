@@ -1,7 +1,8 @@
 #pragma once
 #define SIZE 8
 #include <SFML/Graphics.hpp>
-
+extern int width;
+extern int height;
 extern sf::RenderWindow window;
 
 enum Fig_Number

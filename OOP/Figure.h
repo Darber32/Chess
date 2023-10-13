@@ -1,11 +1,8 @@
 #pragma once
 #include "Main.h"
 #include <SFML/Graphics.hpp>
-//#include "Marker.h"
 
 class Table;
-
-//class Marker;
 
 class Figure
 {
@@ -19,10 +16,9 @@ public:
     sf::Vector2u Get_Coords();
     int Get_Size();
     Color Get_Color();
-    void Move(int x, int y, Table& table, Figure* figure, Figure* markers_mass);
+    void Move(int x, int y, Table& table, Figure* figure, int index);
     void Draw_Figure();
-    void Clear(Figure* markers_mass);
-    virtual void Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass);
+    virtual void Show_Avalible_Positions(Table& table, int& c);
 protected:
     int x, y;
     double size;

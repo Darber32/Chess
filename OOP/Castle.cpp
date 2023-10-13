@@ -11,10 +11,9 @@ Castle::Castle(Color color, int x, int y, sf::Image image)
     Set_Sprite(image, 1);
 }
 
-void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass)
+void Castle::Show_Avalible_Positions(Table& table, int& c)
 {
-    for (int i = 0; i < c; i++)
-        markers_mass[i]->Clear(markers_mass[i]);
+    table.Marker_Clear();
     c = 0;
     int i = 0, offset = size;
     bool flag = true;
@@ -26,14 +25,14 @@ void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass
         {
             if (table.Get_Position((y - offset) / size, x / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x, y - offset);
+                table.Set_Marker_Position(i, x, y - offset);
                 i++;
                 c++;
                 offset += size;
             }
             else if (table.Get_Position((y - offset) / size, x / size)->Get_Color() != color)
             {
-                markers_mass[i]->Set_Position(x, y - offset);
+                table.Set_Marker_Position(i, x, y - offset);
                 i++;
                 c++;
                 flag = false;
@@ -46,20 +45,20 @@ void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass
     offset = size;
     while (flag)
     {
-        if (y + offset >= 800)
+        if (y + offset >= height)
             flag = false;
         if (flag)
         {
             if (table.Get_Position((y + offset) / size, x / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x, y + offset);
+                table.Set_Marker_Position(i, x, y + offset);
                 i++;
                 c++;
                 offset += size;
             }
             else if (table.Get_Position((y + offset) / size, x / size)->Get_Color() != color)
             {
-                markers_mass[i]->Set_Position(x, y + offset);
+                table.Set_Marker_Position(i, x, y + offset);
                 i++;
                 c++;
                 flag = false;
@@ -72,20 +71,20 @@ void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass
     offset = size;
     while (flag)
     {
-        if (x + offset >= 800)
+        if (x + offset >= width)
             flag = false;
         if (flag)
         {
             if (table.Get_Position(y / size, (x + offset) / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x + offset, y);
+                table.Set_Marker_Position(i, x + offset, y);
                 i++;
                 c++;
                 offset += size;
             }
             else if (table.Get_Position(y / size, (x + offset) / size)->Get_Color() != color)
             {
-                markers_mass[i]->Set_Position(x + offset, y);
+                table.Set_Marker_Position(i, x + offset, y);
                 i++;
                 c++;
                 flag = false;
@@ -104,14 +103,14 @@ void Castle::Show_Avalible_Positions(Table& table, int& c, Figure** markers_mass
         {
             if (table.Get_Position(y / size, (x - offset) / size) == nullptr)
             {
-                markers_mass[i]->Set_Position(x - offset, y);
+                table.Set_Marker_Position(i, x - offset, y);
                 i++;
                 c++;
                 offset += size;
             }
             else if (table.Get_Position(y / size, (x - offset) / size)->Get_Color() != color)
             {
-                markers_mass[i]->Set_Position(x - offset, y);
+                table.Set_Marker_Position(i, x - offset, y);
                 i++;
                 c++;
                 flag = false;
