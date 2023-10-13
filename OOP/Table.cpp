@@ -12,11 +12,12 @@
 Table::Table(sf::RectangleShape mass_of_rects[SIZE][SIZE], sf::Image image, sf::Image image_2)
 {
     int index = 0, c = 0;
+    int w = width / 8, h = height / 8;
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
         {
-            mass_of_rects[i][j].setSize(sf::Vector2f(100, 100));
-            mass_of_rects[i][j].setPosition(100 * i, 100 * j);
+            mass_of_rects[i][j].setSize(sf::Vector2f(w, h));
+            mass_of_rects[i][j].setPosition(w * i, h * j);
             if (i % 2 == 0)
                 if (index % 2 == 0)
                     mass_of_rects[i][j].setFillColor(sf::Color::White);
@@ -31,32 +32,32 @@ Table::Table(sf::RectangleShape mass_of_rects[SIZE][SIZE], sf::Image image, sf::
             if (i == 0)
             {
                 if (j == 0 or j == 7)
-                    mass[i][j] = new Castle(black, 100 * j, 0, image);
+                    mass[i][j] = new Castle(black, h * j, 0, image);
                 if (j == 1 or j == 6)
-                    mass[i][j] = new Knight(black, 100 * j, 0, image);
+                    mass[i][j] = new Knight(black, h * j, 0, image);
                 if (j == 2 or j == 5)
-                    mass[i][j] = new Bishop(black, 100 * j, 0, image);
+                    mass[i][j] = new Bishop(black, h * j, 0, image);
                 if (j == 3)
-                    mass[i][j] = new Queen(black, 100 * j, 0, image);
+                    mass[i][j] = new Queen(black, h * j, 0, image);
                 if (j == 4)
-                    mass[i][j] = new King(black, 100 * j, 0, image);
+                    mass[i][j] = new King(black, h * j, 0, image);
             }
             if (i == 1)
-                mass[i][j] = new Pawn(black, 100 * j, 100, image);
+                mass[i][j] = new Pawn(black, h * j, w, image);
             if (i == 6)
-                mass[i][j] = new Pawn(white, 100 * j, 600, image);
+                mass[i][j] = new Pawn(white, h * j, w * 6, image);
             if (i == 7)
             {
                 if (j == 0 or j == 7)
-                    mass[i][j] = new Castle(white, 100 * j, 700, image);
+                    mass[i][j] = new Castle(white, h * j, w * 7, image);
                 if (j == 1 or j == 6)
-                    mass[i][j] = new Knight(white, 100 * j, 700, image);
+                    mass[i][j] = new Knight(white, h * j, w * 7, image);
                 if (j == 2 or j == 5)
-                    mass[i][j] = new Bishop(white, 100 * j, 700, image);
+                    mass[i][j] = new Bishop(white, h * j, w * 7, image);
                 if (j == 3)
-                    mass[i][j] = new Queen(white, 100 * j, 700, image);
+                    mass[i][j] = new Queen(white, h * j, w * 7, image);
                 if (j == 4)
-                    mass[i][j] = new King(white, 100 * j, 700, image);
+                    mass[i][j] = new King(white, h * j, w * 7, image);
             }
             if (i == 0 or i == 1 or i == 6 or i == 7)
                 c++;

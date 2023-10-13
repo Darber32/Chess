@@ -11,8 +11,8 @@
 #include "Marker.h"
 #include "Game.h"
 
-int width = 800;
-int height = 800;
+int width = 1000;
+int height = 1000;
 sf::RenderWindow window(sf::VideoMode(width, height), "Chess!");
 
 int main()

@@ -70,7 +70,7 @@ Color Marker::Get_Color()
 
 void Marker::Clear(Marker * marker_mass)
 {
-        marker_mass->Set_Position(800, 800);
+        marker_mass->Set_Position(width, height);
 }
 
 void Marker::Draw_Figure()
